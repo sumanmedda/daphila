@@ -18,7 +18,7 @@ class UserRegistrationView(APIView):
                 serializer.save()
                 otp = random.randint(100000, 999999)
                 send_email_to_client(otp,request.data['email'])
-                return Response({"status":201,"message": "User registered successfully.\n Please Verify Your email using otp sent to your mail"}, status=status.HTTP_201_CREATED)
+                return Response({"status":201,"message": "User registered successfully.Please Verify Your email using otp sent to your mail"}, status=status.HTTP_201_CREATED)
             return Response({"status":status.HTTP_400_BAD_REQUEST,"message": serializer.error_messages},status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"message": e}, status=status.HTTP_400_BAD_REQUEST)
